@@ -1,0 +1,1 @@
+Use the `work-auditor` skill in weekly mode. Audit only accessible business work from the immediately preceding 168 hours. Produce the weekly skill scorecard, repeated failures, overrides, estimated time saved, newly discovered rules, and promotion proposals. Preserve evidence and do not silently change production behavior.

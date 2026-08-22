@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "releases": {
+    "work-auditor": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "chat-router": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "day-operator": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "meeting-lifecycle": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "call-capture": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "knowledge-curator": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "demo-coach": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "tax-translator": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "pilot-planner": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "team-update": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "agent-architect": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    },
+    "workspace-operator": {
+      "uploaded_version": null,
+      "commit": null,
+      "uploaded_at": null
+    }
+  }
+}

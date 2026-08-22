@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Morning Handoff",
+  "type": "object",
+  "required": [
+    "created_at",
+    "audit_window",
+    "overnight_changes",
+    "corrections",
+    "exceptions",
+    "rehearsal_item"
+  ],
+  "properties": {
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "audit_window": {
+      "type": "object"
+    },
+    "overnight_changes": {
+      "type": "array"
+    },
+    "corrections": {
+      "type": "array"
+    },
+    "exceptions": {
+      "type": "array"
+    },
+    "rehearsal_item": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

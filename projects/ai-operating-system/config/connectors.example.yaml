@@ -1,0 +1,48 @@
+version: 1.0.0
+# Copy to ~/.config/ai-operating-system/connectors.yaml and fill in locally.
+# Do not commit the local copy.
+connectors:
+  notion:
+    enabled: false
+    transport: unset
+    server_or_command: unset
+    scopes:
+      - read
+    write_mode: approval_during_trial
+  attio:
+    enabled: false
+    transport: unset
+    server_or_command: unset
+    scopes:
+      - read
+    write_mode: approval_during_trial
+  circleback:
+    enabled: false
+    transport: unset
+    server_or_command: unset
+    scopes:
+      - read
+    write_mode: disabled
+  gmail:
+    enabled: false
+    transport: unset
+    server_or_command: unset
+    scopes:
+      - read
+      - draft
+    send_mode: explicit_approval_always
+  google_calendar:
+    enabled: false
+    transport: unset
+    server_or_command: unset
+    scopes:
+      - read
+    write_mode: explicit_approval_always
+  slack:
+    enabled: false
+    transport: unset
+    server_or_command: unset
+    scopes:
+      - read
+      - draft
+    post_mode: explicit_approval_always

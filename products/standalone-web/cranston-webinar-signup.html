@@ -1,0 +1,409 @@
+<div id="cranston-webinar-flow">
+  <style>
+    #cranston-webinar-flow {
+      --ink: light-dark(#151515, #f6f1e7);
+      --muted: light-dark(#69655f, #bbb4a8);
+      --line: light-dark(#ded9cf, #45423d);
+      --paper: light-dark(#f7f4ed, #171715);
+      --panel: light-dark(#ffffff, #22221f);
+      --soft: light-dark(#eeeadf, #2b2b27);
+      --brand: #2563eb;
+      --brand-dark: #174bb7;
+      color-scheme: light dark;
+      color: var(--ink);
+      background: var(--paper);
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    #cranston-webinar-flow * { box-sizing: border-box; }
+    #cranston-webinar-flow button,
+    #cranston-webinar-flow input,
+    #cranston-webinar-flow select,
+    #cranston-webinar-flow textarea { font: inherit; }
+    #cranston-webinar-flow button { cursor: pointer; }
+    #cranston-webinar-flow .cw-shell { max-width: 1180px; margin: 0 auto; padding: 0 30px; }
+    #cranston-webinar-flow .cw-header {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      gap: 28px;
+    }
+    #cranston-webinar-flow .cw-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+    #cranston-webinar-flow .cw-mark {
+      width: 28px;
+      height: 28px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      position: relative;
+    }
+    #cranston-webinar-flow .cw-mark::before,
+    #cranston-webinar-flow .cw-mark::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      height: 2px;
+      background: currentColor;
+      transform: rotate(-34deg);
+    }
+    #cranston-webinar-flow .cw-mark::before { top: 9px; }
+    #cranston-webinar-flow .cw-mark::after { top: 15px; }
+    #cranston-webinar-flow .cw-nav { display: flex; align-items: center; gap: 25px; font-size: 13px; }
+    #cranston-webinar-flow .cw-nav a { color: inherit; text-decoration: none; white-space: nowrap; }
+    #cranston-webinar-flow .cw-actions { display: flex; align-items: center; gap: 16px; font-size: 13px; }
+    #cranston-webinar-flow .cw-actions a { color: inherit; text-decoration: none; white-space: nowrap; }
+    #cranston-webinar-flow .cw-pill,
+    #cranston-webinar-flow .cw-primary,
+    #cranston-webinar-flow .cw-secondary {
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      padding: 11px 18px;
+      text-decoration: none;
+      font-weight: 650;
+      transition: transform 120ms ease, background 120ms ease;
+    }
+    #cranston-webinar-flow .cw-pill,
+    #cranston-webinar-flow .cw-primary { background: var(--ink); color: var(--paper); }
+    #cranston-webinar-flow .cw-secondary { background: transparent; color: var(--ink); }
+    #cranston-webinar-flow .cw-pill:hover,
+    #cranston-webinar-flow .cw-primary:hover,
+    #cranston-webinar-flow .cw-secondary:hover { transform: translateY(-1px); }
+    #cranston-webinar-flow .cw-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.8fr);
+      gap: 72px;
+      padding-top: 72px;
+      padding-bottom: 70px;
+      align-items: start;
+    }
+    #cranston-webinar-flow .cw-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    #cranston-webinar-flow .cw-live {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e24838;
+      box-shadow: 0 0 0 5px color-mix(in srgb, #e24838 15%, transparent);
+    }
+    #cranston-webinar-flow h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(45px, 5.8vw, 76px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      max-width: 720px;
+      margin: 0 0 24px;
+    }
+    #cranston-webinar-flow .cw-lede { color: var(--muted); font-size: 19px; max-width: 650px; margin: 0 0 30px; }
+    #cranston-webinar-flow .cw-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 34px;
+    }
+    #cranston-webinar-flow .cw-meta-item { padding: 18px 18px 18px 0; }
+    #cranston-webinar-flow .cw-meta-item + .cw-meta-item { border-left: 1px solid var(--line); padding-left: 18px; }
+    #cranston-webinar-flow .cw-meta-label { display: block; color: var(--muted); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 5px; }
+    #cranston-webinar-flow .cw-meta-value { font-size: 14px; font-weight: 700; }
+    #cranston-webinar-flow .cw-section-title { font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 400; margin: 0 0 18px; }
+    #cranston-webinar-flow .cw-agenda { display: grid; gap: 14px; margin-bottom: 30px; }
+    #cranston-webinar-flow .cw-agenda-item { display: grid; grid-template-columns: 34px 1fr; gap: 13px; align-items: start; }
+    #cranston-webinar-flow .cw-agenda-number {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    #cranston-webinar-flow .cw-agenda-item strong { display: block; font-size: 14px; margin-bottom: 2px; }
+    #cranston-webinar-flow .cw-agenda-item span { color: var(--muted); font-size: 13px; }
+    #cranston-webinar-flow .cw-proof {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 12%, var(--panel)), var(--panel));
+      border: 1px solid color-mix(in srgb, var(--brand) 25%, var(--line));
+      border-radius: 18px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    #cranston-webinar-flow .cw-proof strong { color: var(--ink); display: block; margin-bottom: 2px; }
+    #cranston-webinar-flow .cw-mini-icon { width: 36px; height: 36px; border-radius: 11px; background: var(--brand); color: white; display: grid; place-items: center; flex: 0 0 auto; font-weight: 750; }
+    #cranston-webinar-flow .cw-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 22px 60px color-mix(in srgb, var(--ink) 8%, transparent);
+      position: sticky;
+      top: 24px;
+    }
+    #cranston-webinar-flow .cw-preview {
+      display: flex;
+      gap: 5px;
+      padding: 4px;
+      background: var(--soft);
+      border-radius: 11px;
+      margin-bottom: 22px;
+    }
+    #cranston-webinar-flow .cw-preview button {
+      flex: 1;
+      background: transparent;
+      color: var(--muted);
+      border: 0;
+      border-radius: 8px;
+      padding: 8px 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    #cranston-webinar-flow .cw-preview button[aria-selected="true"] { background: var(--panel); color: var(--ink); box-shadow: 0 1px 4px color-mix(in srgb, var(--ink) 11%, transparent); }
+    #cranston-webinar-flow .cw-view[hidden] { display: none; }
+    #cranston-webinar-flow .cw-card h2 { font-family: Georgia, "Times New Roman", serif; font-size: 31px; font-weight: 400; letter-spacing: -0.025em; margin: 0 0 7px; }
+    #cranston-webinar-flow .cw-card-intro { color: var(--muted); font-size: 13px; margin: 0 0 20px; }
+    #cranston-webinar-flow .cw-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    #cranston-webinar-flow .cw-field { display: grid; gap: 6px; }
+    #cranston-webinar-flow .cw-field-wide { grid-column: 1 / -1; }
+    #cranston-webinar-flow label { font-size: 11px; font-weight: 750; letter-spacing: .02em; }
+    #cranston-webinar-flow input,
+    #cranston-webinar-flow select,
+    #cranston-webinar-flow textarea {
+      width: 100%;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      min-height: 43px;
+      padding: 10px 11px;
+      outline: none;
+    }
+    #cranston-webinar-flow input:focus,
+    #cranston-webinar-flow select:focus,
+    #cranston-webinar-flow textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 15%, transparent); }
+    #cranston-webinar-flow .cw-check { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 11px; margin: 14px 0 16px; }
+    #cranston-webinar-flow .cw-check input { width: 16px; min-height: 16px; margin-top: 1px; accent-color: var(--brand); }
+    #cranston-webinar-flow .cw-primary,
+    #cranston-webinar-flow .cw-secondary { width: 100%; }
+    #cranston-webinar-flow .cw-fine { text-align: center; color: var(--muted); font-size: 10px; margin: 10px 0 0; }
+    #cranston-webinar-flow .cw-success-icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: color-mix(in srgb, #2d9f61 14%, var(--panel));
+      color: #21804c;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    #cranston-webinar-flow .cw-event-box { border: 1px solid var(--line); border-radius: 14px; padding: 15px; margin: 18px 0; display: grid; gap: 4px; }
+    #cranston-webinar-flow .cw-event-box strong { font-size: 14px; }
+    #cranston-webinar-flow .cw-event-box span { color: var(--muted); font-size: 12px; }
+    #cranston-webinar-flow .cw-stack { display: grid; gap: 10px; }
+    #cranston-webinar-flow .cw-status { min-height: 18px; color: #21804c; font-size: 11px; margin: 8px 0 0; text-align: center; }
+    #cranston-webinar-flow .cw-next { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 11px; }
+    #cranston-webinar-flow .cw-next-row { display: grid; grid-template-columns: 23px 1fr; gap: 9px; color: var(--muted); font-size: 11px; }
+    #cranston-webinar-flow .cw-next-row b { color: var(--ink); width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: 10px; }
+    #cranston-webinar-flow .cw-route { display: grid; gap: 10px; margin: 18px 0 15px; }
+    #cranston-webinar-flow .cw-route button {
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      text-align: left;
+    }
+    #cranston-webinar-flow .cw-route button:hover,
+    #cranston-webinar-flow .cw-route button.cw-selected { border-color: var(--brand); background: color-mix(in srgb, var(--brand) 7%, var(--panel)); }
+    #cranston-webinar-flow .cw-route strong { display: block; font-size: 13px; margin-bottom: 2px; }
+    #cranston-webinar-flow .cw-route span { color: var(--muted); font-size: 11px; }
+    #cranston-webinar-flow .cw-footer { border-top: 1px solid var(--line); padding: 24px 0 32px; color: var(--muted); font-size: 11px; display: flex; justify-content: space-between; gap: 20px; }
+    #cranston-webinar-flow .cw-footer a { color: inherit; }
+    #cranston-webinar-flow .cw-mobile-menu { display: none; border: 0; background: transparent; color: var(--ink); font-size: 22px; }
+    #cranston-webinar-flow .cw-error { color: #b23b2e; font-size: 11px; margin-top: 8px; min-height: 16px; }
+    @media (max-width: 920px) {
+      #cranston-webinar-flow .cw-nav { display: none; }
+      #cranston-webinar-flow .cw-main { grid-template-columns: 1fr; gap: 42px; padding-top: 54px; }
+      #cranston-webinar-flow .cw-card { position: static; max-width: 620px; width: 100%; }
+      #cranston-webinar-flow h1 { max-width: 650px; }
+    }
+    @media (max-width: 620px) {
+      #cranston-webinar-flow .cw-shell { padding: 0 18px; }
+      #cranston-webinar-flow .cw-header { min-height: 66px; }
+      #cranston-webinar-flow .cw-actions a { display: none; }
+      #cranston-webinar-flow .cw-mobile-menu { display: block; }
+      #cranston-webinar-flow .cw-pill { padding: 9px 13px; font-size: 11px; }
+      #cranston-webinar-flow .cw-main { padding-top: 38px; padding-bottom: 46px; }
+      #cranston-webinar-flow h1 { font-size: 44px; }
+      #cranston-webinar-flow .cw-lede { font-size: 16px; }
+      #cranston-webinar-flow .cw-meta { grid-template-columns: 1fr; }
+      #cranston-webinar-flow .cw-meta-item + .cw-meta-item { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+      #cranston-webinar-flow .cw-fields { grid-template-columns: 1fr; }
+      #cranston-webinar-flow .cw-field-wide { grid-column: auto; }
+      #cranston-webinar-flow .cw-card { padding: 20px; border-radius: 19px; }
+      #cranston-webinar-flow .cw-preview button { font-size: 10px; }
+      #cranston-webinar-flow .cw-footer { flex-direction: column; }
+    }
+  </style>
+
+  <header class="cw-shell cw-header">
+    <div class="cw-logo" aria-label="Cranston home"><span class="cw-mark" aria-hidden="true"></span>Cranston</div>
+    <nav class="cw-nav" aria-label="Main navigation">
+      <a href="#">Product</a><a href="#">Firm types</a><a href="#">Company</a><a href="#">Resources</a><a href="#">Pricing</a>
+    </nav>
+    <div class="cw-actions"><a href="#">Sign in</a><button class="cw-pill" type="button" data-view-target="register">Save a seat</button><button class="cw-mobile-menu" type="button" aria-label="Open menu">☰</button></div>
+  </header>
+
+  <main class="cw-shell cw-main">
+    <section aria-labelledby="cw-title">
+      <div class="cw-eyebrow"><span class="cw-live" aria-hidden="true"></span>Live webinar for tax firms</div>
+      <h1 id="cw-title">From client package to review-ready return</h1>
+      <p class="cw-lede">See how Cranston works with the tax software you already use, prepares the repetitive work, and keeps reviewers in control—without adding another one-to-one sales call to your calendar.</p>
+      <div class="cw-meta" aria-label="Webinar details">
+        <div class="cw-meta-item"><span class="cw-meta-label">When</span><span class="cw-meta-value">Wed, Sep 2<br>11:00 AM PT</span></div>
+        <div class="cw-meta-item"><span class="cw-meta-label">Length</span><span class="cw-meta-value">40 min demo<br>10 min Q&amp;A</span></div>
+        <div class="cw-meta-item"><span class="cw-meta-label">Host</span><span class="cw-meta-value">Max Minsker<br>Cranston</span></div>
+      </div>
+      <h2 class="cw-section-title">What Max will show</h2>
+      <div class="cw-agenda">
+        <div class="cw-agenda-item"><span class="cw-agenda-number">1</span><div><strong>A real return from intake to review</strong><span>Watch Cranston organize source documents, prepare the work, and surface review decisions.</span></div></div>
+        <div class="cw-agenda-item"><span class="cw-agenda-number">2</span><div><strong>How it fits your firm</strong><span>We’ll tailor the walkthrough live for Drake, CCH Axcess, UltraTax, Lacerte, and other workflows.</span></div></div>
+        <div class="cw-agenda-item"><span class="cw-agenda-number">3</span><div><strong>Owner, preparer, and reviewer workflows</strong><span>See what changes for each person—and what remains under human control.</span></div></div>
+      </div>
+      <div class="cw-proof"><span class="cw-mini-icon">C</span><div><strong>Built for the stack you already have</strong>Works alongside QuickBooks, Drake, CCH Axcess, UltraTax, Lacerte, and the rest of your firm’s workflow.</div></div>
+    </section>
+
+    <aside class="cw-card" aria-live="polite">
+      <div class="cw-preview" role="tablist" aria-label="Preview webinar signup stages">
+        <button type="button" role="tab" aria-selected="true" data-view-target="register">Registration</button>
+        <button type="button" role="tab" aria-selected="false" data-view-target="confirmed">Confirmation</button>
+        <button type="button" role="tab" aria-selected="false" data-view-target="followup">Follow-up</button>
+      </div>
+
+      <section class="cw-view" data-view="register">
+        <h2>Save your seat</h2>
+        <p class="cw-card-intro">Tell us enough to make the live demo relevant to your firm. No sales call required.</p>
+        <form id="cw-registration-form" novalidate>
+          <div class="cw-fields">
+            <div class="cw-field"><label for="cw-name">First name</label><input id="cw-name" name="name" autocomplete="given-name" placeholder="Alex" required></div>
+            <div class="cw-field"><label for="cw-email">Work email</label><input id="cw-email" name="email" type="email" autocomplete="email" placeholder="alex@yourfirm.com" required></div>
+            <div class="cw-field cw-field-wide"><label for="cw-firm">Firm name</label><input id="cw-firm" name="firm" autocomplete="organization" placeholder="Your firm" required></div>
+            <div class="cw-field"><label for="cw-role">Your role</label><select id="cw-role" name="role" required><option value="">Select role</option><option>Owner / partner</option><option>Tax preparer</option><option>Reviewer / manager</option><option>Operations / technology</option></select></div>
+            <div class="cw-field"><label for="cw-software">Primary tax software</label><select id="cw-software" name="software" required><option value="">Select software</option><option>Drake</option><option>CCH Axcess</option><option>UltraTax</option><option>Lacerte</option><option>ProSeries</option><option>Other / evaluating</option></select></div>
+            <div class="cw-field"><label for="cw-volume">Annual return volume</label><select id="cw-volume" name="volume"><option>Under 250</option><option>250–500</option><option>501–1,000</option><option>1,001–2,500</option><option>2,500+</option></select></div>
+            <div class="cw-field"><label for="cw-use">Who would use Cranston?</label><select id="cw-use" name="use"><option>Me</option><option>A preparer</option><option>Reviewers</option><option>Multiple roles</option><option>Still deciding</option></select></div>
+            <div class="cw-field cw-field-wide"><label for="cw-bottleneck">Biggest bottleneck</label><select id="cw-bottleneck" name="bottleneck"><option>Organizing client documents</option><option>Preparing returns</option><option>Review capacity</option><option>Staffing and training</option><option>Workflow handoffs</option><option>Evaluating AI safely</option></select></div>
+          </div>
+          <label class="cw-check"><input type="checkbox" id="cw-consent" required><span>Send me registration and reminder emails for this session. I understand the session may be recorded.</span></label>
+          <button class="cw-primary" type="submit">Save my seat</button>
+          <div class="cw-error" id="cw-error" role="alert"></div>
+          <p class="cw-fine">Free to attend. Unsubscribe from webinar updates at any time.</p>
+        </form>
+      </section>
+
+      <section class="cw-view" data-view="confirmed" hidden>
+        <div class="cw-success-icon" aria-hidden="true">✓</div>
+        <h2>You’re registered</h2>
+        <p class="cw-card-intro">We’ll send the join link and reminders to <strong id="cw-confirmed-email">your work email</strong>.</p>
+        <div class="cw-event-box"><strong>From client package to review-ready return</strong><span>Wednesday, September 2 · 11:00 AM PT / 2:00 PM ET</span><span>Hosted live by Max Minsker · 50 minutes</span></div>
+        <div class="cw-stack"><button type="button" class="cw-primary" id="cw-calendar">Add to calendar</button><button type="button" class="cw-secondary" id="cw-question">Send Max a question</button></div>
+        <div class="cw-status" id="cw-confirm-status"></div>
+        <div class="cw-next">
+          <div class="cw-next-row"><b>1</b><span>Confirmation email with the webinar link arrives now.</span></div>
+          <div class="cw-next-row"><b>2</b><span>We’ll send useful reminders one day and one hour before.</span></div>
+          <div class="cw-next-row"><b>3</b><span>Answer two live polls so Max can tailor the walkthrough.</span></div>
+        </div>
+      </section>
+
+      <section class="cw-view" data-view="followup" hidden>
+        <h2>What would help next?</h2>
+        <p class="cw-card-intro">Choose the next step that fits your firm. The Cranston team can pick up the conversation from your webinar answers.</p>
+        <div class="cw-route">
+          <button type="button" data-route="demo"><strong>Book a firm-specific demo</strong><span>Bring your workflow, team roles, and software questions.</span></button>
+          <button type="button" data-route="fit"><strong>Check technical fit first</strong><span>Confirm tax software, installation, security, and workflow details.</span></button>
+          <button type="button" data-route="recording"><strong>Just send the recording</strong><span>Keep learning without booking another meeting yet.</span></button>
+        </div>
+        <button type="button" class="cw-primary" id="cw-followup-action">Choose an option</button>
+        <div class="cw-status" id="cw-route-status"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="cw-shell cw-footer"><span>© 2026 Cranston · AI-powered tax and accounting software</span><span><a href="#">Privacy</a> · <a href="#">Security</a> · <a href="#">Contact</a></span></footer>
+
+  <script>
+    (() => {
+      const root = document.getElementById('cranston-webinar-flow');
+      if (!root) return;
+      const viewButtons = [...root.querySelectorAll('[data-view-target]')];
+      const views = [...root.querySelectorAll('[data-view]')];
+      const showView = (name) => {
+        views.forEach((view) => { view.hidden = view.dataset.view !== name; });
+        root.querySelectorAll('.cw-preview [data-view-target]').forEach((button) => {
+          button.setAttribute('aria-selected', String(button.dataset.viewTarget === name));
+        });
+        root.querySelector('.cw-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      };
+      viewButtons.forEach((button) => button.addEventListener('click', () => showView(button.dataset.viewTarget)));
+
+      const form = root.querySelector('#cw-registration-form');
+      const error = root.querySelector('#cw-error');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          error.textContent = 'Complete the required fields so we can reserve your seat.';
+          form.reportValidity();
+          return;
+        }
+        error.textContent = '';
+        root.querySelector('#cw-confirmed-email').textContent = root.querySelector('#cw-email').value;
+        showView('confirmed');
+      });
+
+      root.querySelector('#cw-calendar').addEventListener('click', () => {
+        root.querySelector('#cw-confirm-status').textContent = 'Calendar hold ready — in production this opens Google, Outlook, or an .ics file.';
+      });
+      root.querySelector('#cw-question').addEventListener('click', () => {
+        root.querySelector('#cw-confirm-status').textContent = 'Question form opened — Max will receive it before the live session.';
+      });
+
+      let selectedRoute = '';
+      const routeLabels = { demo: 'Continue to Max’s team calendar', fit: 'Open the technical-fit checklist', recording: 'Confirm recording delivery' };
+      root.querySelectorAll('[data-route]').forEach((button) => {
+        button.addEventListener('click', () => {
+          root.querySelectorAll('[data-route]').forEach((item) => item.classList.remove('cw-selected'));
+          button.classList.add('cw-selected');
+          selectedRoute = button.dataset.route;
+          root.querySelector('#cw-followup-action').textContent = routeLabels[selectedRoute];
+          root.querySelector('#cw-route-status').textContent = '';
+        });
+      });
+      root.querySelector('#cw-followup-action').addEventListener('click', () => {
+        root.querySelector('#cw-route-status').textContent = selectedRoute ? 'Selection saved. This would now open the matching handoff.' : 'Choose one of the three next steps first.';
+      });
+    })();
+  </script>
+</div>

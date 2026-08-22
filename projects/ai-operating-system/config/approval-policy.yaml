@@ -1,0 +1,79 @@
+version: 1.1.0
+modes:
+  read:
+    default: automatic
+  research:
+    default: automatic
+  draft_email:
+    default: automatic
+  test_documentation_changes:
+    default: automatic
+  notion_create_update:
+    default: approval_during_trial
+    autonomy_eligible_after_clean_runs: 5
+  attio_create_update:
+    default: approval_during_trial
+    autonomy_eligible_after_clean_runs: 5
+  chat_move_rename:
+    default: approval_during_trial
+    autonomy_eligible_after_clean_runs: 5
+  email_send:
+    default: explicit_approval_always
+  calendar_create_update:
+    default: explicit_approval_always
+  slack_post:
+    default: explicit_approval_always
+  deal_stage_change:
+    default: explicit_approval_always
+  mark_deal_lost:
+    default: explicit_approval_always
+  archive_delete:
+    default: explicit_approval_always
+  production_skill_change:
+    default: explicit_approval_always
+  github_non_primary_owner_write:
+    default: prohibited
+scoped_exceptions:
+  sync_attio_pipeline:
+    approved_on: 2026-08-20
+    notion_temp_create_update:
+      default: automatic
+      minimum_confidence: 0.90
+    forward_stage_lead:
+      default: automatic
+    forward_stage_prove_value:
+      default: automatic
+    contracting:
+      default: explicit_approval_always
+    won:
+      default: explicit_approval_always
+    lost:
+      default: explicit_approval_always
+    backward_stage_change:
+      default: explicit_approval_always
+    ambiguous_merge:
+      default: explicit_approval_always
+    attio_writes:
+      default: disabled
+required_evidence:
+  - source_excerpt
+  - source_link_or_id
+  - before_value
+  - after_value
+  - reason
+  - confidence
+  - risk
+  - duplicate_check
+  - verification_plan
+  - rollback_plan
+  - idempotency_key
+permanent_no_autonomy:
+  - email_send
+  - calendar_create_update
+  - slack_post
+  - mark_deal_lost
+  - archive_delete
+  - publish_unverified_business_claim
+  - git_force_push
+  - automatic_conflict_resolution
+  - github_non_primary_owner_write

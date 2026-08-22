@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f7">
+  <title>Ross's Sales Demo Practice</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card: rgba(255, 255, 255, .78);
+      --card-solid: #fff;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(29, 29, 31, .1);
+      --blue: #0071e3;
+      --blue-dark: #005bb5;
+      --green: #34c759;
+      --orange: #ff9f0a;
+      --shadow: 0 12px 34px rgba(0, 0, 0, .07), 0 2px 8px rgba(0, 0, 0, .04);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(0, 113, 227, .11), transparent 26rem),
+        radial-gradient(circle at 4% 25%, rgba(52, 199, 89, .08), transparent 22rem),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 68px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; }
+
+    .brand-mark {
+      display: grid;
+      width: 26px;
+      height: 26px;
+      place-items: center;
+      color: white;
+      background: var(--ink);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav-note { font-weight: 500; }
+
+    .hero { max-width: 780px; margin-bottom: 38px; }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 740px;
+      margin-bottom: 18px;
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 700;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.2vw, 22px);
+      letter-spacing: -.015em;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 54px;
+    }
+
+    .metric, .card, .practice-card, .scorecard {
+      border: 1px solid rgba(255, 255, 255, .82);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .metric {
+      min-height: 158px;
+      padding: 24px;
+      border-radius: var(--radius);
+    }
+
+    .metric-label {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .metric-value {
+      margin-bottom: 7px;
+      font-size: 35px;
+      font-weight: 700;
+      letter-spacing: -.05em;
+    }
+
+    .metric-copy { color: var(--muted); font-size: 14px; }
+
+    .progress-track {
+      height: 8px;
+      margin: 19px 0 11px;
+      overflow: hidden;
+      background: #e5e5ea;
+      border-radius: 999px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), #5ac8fa);
+      border-radius: inherit;
+      transition: width .35s ease;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 0 0 18px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+      font-size: 30px;
+      letter-spacing: -.04em;
+    }
+
+    .section-heading p {
+      max-width: 390px;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+
+    .priority {
+      min-height: 178px;
+      padding: 20px;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .1);
+    }
+
+    .priority:nth-child(1) { background: linear-gradient(145deg, #0071e3, #34a7ff); }
+    .priority:nth-child(2) { background: linear-gradient(145deg, #1d1d1f, #515154); }
+    .priority:nth-child(3) { background: linear-gradient(145deg, #0b7d45, #34c759); }
+    .priority:nth-child(4) { background: linear-gradient(145deg, #af5000, #ff9f0a); }
+    .priority:nth-child(5) { background: linear-gradient(145deg, #6533a3, #af52de); }
+
+    .priority-number {
+      display: block;
+      margin-bottom: 32px;
+      opacity: .72;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .priority h3 { margin-bottom: 7px; font-size: 18px; letter-spacing: -.025em; }
+    .priority p { margin-bottom: 0; opacity: .84; font-size: 13px; }
+
+    .practice-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .practice-card {
+      padding: 24px;
+      border-radius: var(--radius);
+    }
+
+    .practice-card.full { grid-column: 1 / -1; }
+
+    .practice-top {
+      display: flex;
+      align-items: start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .practice-icon {
+      display: grid;
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      color: var(--blue);
+      background: #e8f2ff;
+      border-radius: 12px;
+      font-size: 18px;
+    }
+
+    .practice-card:nth-child(2n) .practice-icon { color: #0b7d45; background: #e7f8ed; }
+    .practice-card:nth-child(3n) .practice-icon { color: #af5000; background: #fff2dc; }
+
+    .practice-top h3 { margin: 1px 0 4px; font-size: 20px; letter-spacing: -.03em; }
+    .practice-top p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+
+    .item-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+
+    .item {
+      display: flex;
+      align-items: start;
+      gap: 11px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: #3b3b3d;
+      font-size: 14px;
+    }
+
+    .item:first-child { border-top: 0; }
+
+    .item input {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin: 1px 0 0;
+      accent-color: var(--blue);
+    }
+
+    .item label { cursor: pointer; }
+    .item input:checked + label { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+
+    .quote {
+      margin: 18px 0 4px;
+      padding: 15px 17px;
+      border-left: 3px solid var(--blue);
+      color: #3b3b3d;
+      background: #f5f9ff;
+      border-radius: 0 12px 12px 0;
+      font-size: 14px;
+    }
+
+    .quote strong { color: var(--ink); }
+
+    .scorecard {
+      margin-bottom: 30px;
+      padding: 28px;
+      border-radius: var(--radius);
+    }
+
+    .scorecard-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .scorecard h2 { margin-bottom: 6px; font-size: 30px; letter-spacing: -.04em; }
+    .scorecard-intro p { max-width: 550px; margin-bottom: 0; color: var(--muted); font-size: 14px; }
+
+    .score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+    .score {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 15px;
+      background: #f5f5f7;
+      border-radius: 14px;
+      color: #3b3b3d;
+      font-size: 13px;
+    }
+
+    .score input {
+      width: 48px;
+      padding: 6px 4px;
+      border: 1px solid #d2d2d7;
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      text-align: center;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      background: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 600;
+    }
+
+    button:hover { background: #424245; }
+
+    @media (max-width: 900px) {
+      .priority-grid { grid-template-columns: repeat(3, 1fr); }
+      .priority:nth-child(4), .priority:nth-child(5) { min-height: 150px; }
+      .score-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 28px, 560px); padding-top: 22px; }
+      .nav { margin-bottom: 52px; }
+      .nav-note { display: none; }
+      h1 { font-size: 52px; }
+      .overview, .practice-list { grid-template-columns: 1fr; }
+      .priority-grid { grid-template-columns: repeat(2, 1fr); }
+      .priority:last-child { grid-column: 1 / -1; min-height: 132px; }
+      .section-heading, .scorecard-intro, .footer { display: block; }
+      .section-heading p { margin-top: 8px; text-align: left; }
+      .scorecard-intro p { margin-top: 8px; }
+      .score-grid { grid-template-columns: 1fr; }
+      .footer button { margin-top: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="nav" aria-label="Page navigation">
+      <div class="brand"><span class="brand-mark">R</span><span>Ross / Demo Practice</span></div>
+      <span class="nav-note">A calmer, sharper, more useful conversation</span>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">Cranston sales demos</p>
+      <h1>Make the demo feel like the next logical step.</h1>
+      <p class="hero-copy">Your highest-leverage improvement is simple: slow down, listen completely, and make every explanation respond to what the prospect actually said.</p>
+    </header>
+
+    <section class="overview" aria-label="Practice progress">
+      <div class="metric">
+        <div class="metric-label">Action items completed</div>
+        <div class="metric-value"><span id="completed">0</span><span class="metric-copy"> / <span id="total">0</span></span></div>
+        <div class="progress-track" aria-label="Action item progress"><div class="progress-bar" id="progress"></div></div>
+        <div class="metric-copy" id="progress-copy">Start with the five priorities below.</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">First priority</div>
+        <div class="metric-value">Slow down.</div>
+        <div class="metric-copy">Silence is better than a filler word.</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Demo standard</div>
+        <div class="metric-value">Specific.</div>
+        <div class="metric-copy">Say what the feature, person, or next step actually is.</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="priorities-title">
+      <div class="section-heading">
+        <h2 id="priorities-title">Start here</h2>
+        <p>These five habits will make the biggest difference in the next recording.</p>
+      </div>
+      <div class="priority-grid">
+        <article class="priority"><span class="priority-number">01</span><h3>Slow down</h3><p>Pause after answers and between transitions.</p></article>
+        <article class="priority"><span class="priority-number">02</span><h3>Listen fully</h3><p>Take notes before you try to summarize.</p></article>
+        <article class="priority"><span class="priority-number">03</span><h3>Tailor the flow</h3><p>Show the prospect’s team workflow, not a generic demo.</p></article>
+        <article class="priority"><span class="priority-number">04</span><h3>Answer cleanly</h3><p>Answer the question asked, then leave room.</p></article>
+        <article class="priority"><span class="priority-number">05</span><h3>Close clearly</h3><p>End with the documents, owner, and next step.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="practice-title">
+      <div class="section-heading">
+        <h2 id="practice-title">Practice library</h2>
+        <p>Check off the behaviors you have rehearsed and demonstrated in a recording.</p>
+      </div>
+
+      <div class="practice-list">
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">◌</div><div><h3>Presence &amp; pacing</h3><p>Sound settled, confident, and easy to follow.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p1"><label for="p1">Leave a one- to two-second pause after the prospect finishes speaking.</label></li>
+            <li class="item"><input type="checkbox" id="p2"><label for="p2">Speak more slowly between sections; let important statements sink in.</label></li>
+            <li class="item"><input type="checkbox" id="p3"><label for="p3">Lower your pitch and reduce the upward inflection at the end of questions.</label></li>
+            <li class="item"><input type="checkbox" id="p4"><label for="p4">Practice stumbling less by using silence instead of rushing to the next word.</label></li>
+            <li class="item"><input type="checkbox" id="p5"><label for="p5">Use the prospect’s name naturally during the conversation.</label></li>
+          </ul>
+        </article>
+
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">◎</div><div><h3>Listening &amp; discovery</h3><p>Understand the workflow before showing the product.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p6"><label for="p6">Do not interrupt; pause after an answer to see if the prospect has more to say.</label></li>
+            <li class="item"><input type="checkbox" id="p7"><label for="p7">Take short bullet-point notes while the prospect is speaking.</label></li>
+            <li class="item"><input type="checkbox" id="p8"><label for="p8">Ask which tax software, edition, hosting environment, and workflow they use.</label></li>
+            <li class="item"><input type="checkbox" id="p9"><label for="p9">Clarify who prepares, who administers, and who reviews the returns.</label></li>
+            <li class="item"><input type="checkbox" id="p10"><label for="p10">Ask what specifically makes the review process slow or difficult today.</label></li>
+          </ul>
+        </article>
+
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">↗</div><div><h3>Accurate reflection</h3><p>Show that you heard the full problem, not just one piece.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p11"><label for="p11">Summarize the prospect’s concerns in a few accurate bullet points before pivoting.</label></li>
+            <li class="item"><input type="checkbox" id="p12"><label for="p12">Mention the preparer and admin workflow when those roles matter.</label></li>
+            <li class="item"><input type="checkbox" id="p13"><label for="p13">Respond to the points they actually raised instead of trying to remember everything.</label></li>
+            <li class="item"><input type="checkbox" id="p14"><label for="p14">Use a natural bridge from their words into the next demo section.</label></li>
+          </ul>
+          <div class="quote"><strong>Practice bridge:</strong> “You mentioned that your junior preparer and admin need to prepare the returns, while you want a faster review process. Let me show you that workflow.”</div>
+        </article>
+
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">▣</div><div><h3>Tailored demo craft</h3><p>Make the team’s workflow visible in the product.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p15"><label for="p15">Say “your preparers” when describing how the prospect’s team will use the system.</label></li>
+            <li class="item"><input type="checkbox" id="p16"><label for="p16">Explain what the preparer does first and where the reviewer comes in afterward.</label></li>
+            <li class="item"><input type="checkbox" id="p17"><label for="p17">Define Findings at a high level before showing individual findings.</label></li>
+            <li class="item"><input type="checkbox" id="p18"><label for="p18">Explain what properties were imported and what needs the reviewer’s attention.</label></li>
+            <li class="item"><input type="checkbox" id="p19"><label for="p19">Mention uploading the prior-year documents at the right point in the workflow.</label></li>
+          </ul>
+        </article>
+
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">Aa</div><div><h3>Language &amp; confidence</h3><p>Use direct words that make the product easier to trust.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p20"><label for="p20">Replace “um,” “uh,” “mmm,” “yeah, so,” “basically,” and “you know” with a pause.</label></li>
+            <li class="item"><input type="checkbox" id="p21"><label for="p21">Use “Absolutely” as an acknowledgment, not as an unverified integration claim.</label></li>
+            <li class="item"><input type="checkbox" id="p22"><label for="p22">Say “our system,” “client,” “preparer,” and “tax code.”</label></li>
+            <li class="item"><input type="checkbox" id="p23"><label for="p23">Use specific names instead of “this,” “that,” “stuff,” or “tax form.”</label></li>
+            <li class="item"><input type="checkbox" id="p24"><label for="p24">Avoid “always has for the last 20 years” and other language that creates resistance to change.</label></li>
+          </ul>
+        </article>
+
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">?</div><div><h3>Concise Q&amp;A</h3><p>Be helpful without flooding the prospect with information.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p25"><label for="p25">Answer yes-or-no questions directly, then stop: “Yes, absolutely.”</label></li>
+            <li class="item"><input type="checkbox" id="p26"><label for="p26">Keep answers to fewer than four sentences.</label></li>
+            <li class="item"><input type="checkbox" id="p27"><label for="p27">Do not answer objections the prospect has not raised.</label></li>
+            <li class="item"><input type="checkbox" id="p28"><label for="p28">Prepare verified answers for security, client approval, Drake, TaxDome, and review tools.</label></li>
+            <li class="item"><input type="checkbox" id="p29"><label for="p29">Know the full process well enough to explain what happens before and after import.</label></li>
+          </ul>
+        </article>
+
+        <article class="practice-card">
+          <div class="practice-top"><div class="practice-icon">✓</div><div><h3>Close &amp; follow-through</h3><p>Make the next step concrete and easy to execute.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p30"><label for="p30">Practice asking what documents and representative returns the prospect should bring.</label></li>
+            <li class="item"><input type="checkbox" id="p31"><label for="p31">State the minimum number of returns when discussing a trial or pilot.</label></li>
+            <li class="item"><input type="checkbox" id="p32"><label for="p32">End by recapping exactly what you will email, what they will send, and when you will meet again.</label></li>
+            <li class="item"><input type="checkbox" id="p33"><label for="p33">Write the agreed next step down before the call ends so you do not misstate it.</label></li>
+          </ul>
+        </article>
+
+        <article class="practice-card full">
+          <div class="practice-top"><div class="practice-icon">↺</div><div><h3>Recording review loop</h3><p>Do not trust your first impression of how the demo went. Review the recording against observable behaviors.</p></div></div>
+          <ul class="item-list">
+            <li class="item"><input type="checkbox" id="p34"><label for="p34">Count filler words and note every moment you rushed through a transition.</label></li>
+            <li class="item"><input type="checkbox" id="p35"><label for="p35">Mark whether your summary included the prospect’s actual team roles and review bottleneck.</label></li>
+            <li class="item"><input type="checkbox" id="p36"><label for="p36">Write down one answer that was too long and rehearse a shorter version.</label></li>
+            <li class="item"><input type="checkbox" id="p37"><label for="p37">Choose one behavior to fix in the next recording instead of trying to fix everything at once.</label></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="scorecard" aria-labelledby="score-title">
+      <div class="scorecard-intro">
+        <div><h2 id="score-title">Recording scorecard</h2><p>Rate each area from 1–5 after a practice demo. A 5 means the behavior was consistent, not merely present once.</p></div>
+      </div>
+      <div class="score-grid">
+        <label class="score">Calm pace <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Filler control <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Listening <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Discovery quality <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Accurate summary <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Tailored workflow <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Answer discipline <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Product precision <input type="number" min="1" max="5" placeholder="1–5"></label>
+        <label class="score">Clear next step <input type="number" min="1" max="5" placeholder="1–5"></label>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Focus for the next recording: slow down, listen fully, and make the demo specific.</span>
+      <button id="reset" type="button">Reset checkboxes</button>
+    </footer>
+  </main>
+
+  <script>
+    const checks = [...document.querySelectorAll('input[type="checkbox"]')];
+    const completed = document.getElementById('completed');
+    const total = document.getElementById('total');
+    const progress = document.getElementById('progress');
+    const progressCopy = document.getElementById('progress-copy');
+    const storageKey = 'ross-sales-demo-practice';
+
+    total.textContent = checks.length;
+
+    function updateProgress() {
+      const count = checks.filter((check) => check.checked).length;
+      const percentage = checks.length ? Math.round((count / checks.length) * 100) : 0;
+      completed.textContent = count;
+      progress.style.width = percentage + '%';
+      progressCopy.textContent = count === 0
+        ? 'Start with the five priorities below.'
+        : percentage === 100
+          ? 'Complete. Re-record the demo and start another pass.'
+          : percentage + '% practiced. Keep the next improvement small.';
+      localStorage.setItem(storageKey, JSON.stringify(checks.map((check) => check.checked)));
+    }
+
+    function restore() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        checks.forEach((check, index) => { check.checked = Boolean(saved[index]); });
+      } catch (error) {
+        // If storage is unavailable, the checklist still works for this visit.
+      }
+      updateProgress();
+    }
+
+    checks.forEach((check) => check.addEventListener('change', updateProgress));
+    document.getElementById('reset').addEventListener('click', () => {
+      checks.forEach((check) => { check.checked = false; });
+      updateProgress();
+    });
+    restore();
+  </script>
+</body>
+</html>

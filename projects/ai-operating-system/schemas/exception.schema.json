@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI OS Exception",
+  "type": "object",
+  "required": [
+    "exception_id",
+    "created_at",
+    "skill",
+    "reason",
+    "severity",
+    "status",
+    "safe_next_step"
+  ],
+  "properties": {
+    "exception_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "skill": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "info",
+        "warning",
+        "blocking"
+      ]
+    },
+    "status": {
+      "enum": [
+        "open",
+        "resolved",
+        "dismissed"
+      ]
+    },
+    "missing_capability": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "safe_next_step": {
+      "type": "string"
+    },
+    "question_for_user": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

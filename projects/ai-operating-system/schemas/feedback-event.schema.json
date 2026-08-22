@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Feedback Event",
+  "type": "object",
+  "required": [
+    "feedback_id",
+    "created_at",
+    "skill",
+    "rating",
+    "original_output",
+    "correction"
+  ],
+  "properties": {
+    "feedback_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "skill": {
+      "type": "string"
+    },
+    "rating": {
+      "enum": [
+        "useful",
+        "wrong",
+        "missing"
+      ]
+    },
+    "original_output": {
+      "type": "string"
+    },
+    "correction": {
+      "type": "string"
+    },
+    "negative_test_created": {
+      "type": "boolean"
+    },
+    "positive_test_created": {
+      "type": "boolean"
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

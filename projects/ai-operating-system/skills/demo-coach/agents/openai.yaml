@@ -1,0 +1,6 @@
+interface:
+  display_name: "Demo Coach"
+  short_description: "Improve live sales judgment and recall, not merely store knowledge."
+  default_prompt: "Role-play the prospect, then coach my response using current approved knowledge and post-answer claim checks." 
+policy:
+  allow_implicit_invocation: false

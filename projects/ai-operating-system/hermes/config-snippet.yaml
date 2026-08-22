@@ -1,0 +1,5 @@
+# Merge this into ~/.hermes/config.yaml using scripts/configure-hermes.py.
+skills:
+  external_dirs:
+    - /ABSOLUTE/PATH/TO/ai-operating-system/skills
+  write_approval: true

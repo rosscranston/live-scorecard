@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pilot Planner"
+  short_description: "Make proof-of-value work decisive, measurable, and tied to the prospect’s buying criteria."
+  default_prompt: "Build a measurable pilot that proves the prospect’s actual deciding requirements without unsupported commitments." 
+policy:
+  allow_implicit_invocation: false

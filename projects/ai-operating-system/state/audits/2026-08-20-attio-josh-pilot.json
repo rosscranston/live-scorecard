@@ -1,0 +1,90 @@
+{
+  "action_id": "attio-josh-pilot-20260820",
+  "created_at": "2026-08-20T15:01:26-07:00",
+  "service": "attio",
+  "operation": "upsert_company_person_deal_and_create_company_note",
+  "target": {
+    "kind": "attio_company_domain",
+    "id": "a1c1454d-a536-42ce-ab6c-46cbd9ac5165",
+    "locator": "https://app.attio.com/cranston/company/a1c1454d-a536-42ce-ab6c-46cbd9ac5165/overview"
+  },
+  "before": {
+    "company_matches": 0,
+    "person_matches": 0,
+    "deal_matches": 0
+  },
+  "after": {
+    "company": {
+      "record_id": "a1c1454d-a536-42ce-ab6c-46cbd9ac5165",
+      "name": "EF&S",
+      "domain": "elsteinfriedman.com",
+      "annual_return_volume": 650,
+      "tax_software": ["ProSeries"]
+    },
+    "person": {
+      "record_id": "757bef5d-45da-42dc-99a9-361cb5f677ce",
+      "name": "Josh Matthew",
+      "email": "josh@elsteinfriedman.com"
+    },
+    "deal": {
+      "record_id": "bd764c9a-bea0-4134-96d8-2d22bb356c9c",
+      "name": "EF&S | ProSeries",
+      "stage": "Prove Value",
+      "owner_workspace_member_id": "fd286374-d5c3-4417-87dc-e62c596da0fc",
+      "value_usd": 26000,
+      "sample_data_received": false,
+      "competitive_alternatives": []
+    },
+    "company_note": {
+      "note_id": "8fbccfde-5c6f-4f6a-a741-bc968fd88c76",
+      "meeting_id": "6f075754-e096-434b-86c6-8765ec2b95fc",
+      "circleback_url": "https://circleback.ai/meetings/a6NffPoOOtgEE9zKa8JMI"
+    }
+  },
+  "reason": "Ross explicitly approved Josh as a one-off Attio workflow test despite rating him Bad and excluding similar prospects in the future.",
+  "confidence": 0.98,
+  "risk": "medium",
+  "approval": {
+    "required": true,
+    "status": "approved",
+    "approved_by": "Ross Gates",
+    "approved_at": "2026-08-20T15:01:26-07:00"
+  },
+  "evidence": [
+    {
+      "source": "user_instruction",
+      "excerpt": "Please execute for Josh because I am the owner of this lead.",
+      "link_or_id": "current-codex-task"
+    },
+    {
+      "source": "circleback_transcript",
+      "excerpt": "Okay, so let's set it up.",
+      "link_or_id": "https://circleback.ai/meetings/a6NffPoOOtgEE9zKa8JMI"
+    },
+    {
+      "source": "google_calendar",
+      "excerpt": "Approximately how many returns does your firm expect to prepare next tax season?: 650",
+      "link_or_id": "dfl42ovbo8hhl40ihi13jiu7r0"
+    }
+  ],
+  "duplicate_check": {
+    "status": "clear",
+    "matches": []
+  },
+  "idempotency_key": "attio:josh-pilot:elsteinfriedman.com:a6NffPoOOtgEE9zKa8JMI",
+  "verification": {
+    "method": "Read back the Company, Person, Deal, relationships, Company note metadata, and note body through Attio.",
+    "expected": "One company, one Josh person, one Prove Value deal owned by Ross at $26,000, and one qualification note.",
+    "actual": "All four artifacts and their relationships were read back successfully; the one-off approval was marked consumed."
+  },
+  "rollback": {
+    "method": "manual_archive_or_correction_with_approval",
+    "instructions": "Correct the records in place; archive test records only after Ross explicitly approves deletion or archival."
+  },
+  "metadata": {
+    "skill": "sync-attio-pipeline",
+    "one_off_pilot": true,
+    "general_attio_writes_enabled": false,
+    "completed_at": "2026-08-20T15:04:33-07:00"
+  }
+}

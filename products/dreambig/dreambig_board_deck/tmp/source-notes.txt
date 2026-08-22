@@ -1,0 +1,6 @@
+DreamBig monthly board reporting deck
+
+[Sources]
+Workbook: /Users/rossegates/Documents/desktop automation/outputs/dreambig_financial_model/DreamBig_ecommerce_financial_model.xlsx
+Range: Monthly_Board!A4:R28
+Usage: all month-level KPIs, chart values, and takeaways are derived from 2026 forecast rows.

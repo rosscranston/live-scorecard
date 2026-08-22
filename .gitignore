@@ -1,0 +1,29 @@
+.DS_Store
+._*
+
+# The raw Codex task history and memories must never be committed in plaintext.
+private-state-plaintext/
+restore-staging/
+
+# Local credentials and mutable Codex databases are never portable Git content.
+auth.json
+*.env
+*.pem
+*.key
+*.p12
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Rebuildable caches and dependencies.
+.build/
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.pyc
+
+# Temporary encryption output.
+encrypted/*.tmp
+

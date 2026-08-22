@@ -1,0 +1,6 @@
+interface:
+  display_name: "Meeting Lifecycle"
+  short_description: "Apply consistent sales process before, during, and after each meeting while preserving human judgment."
+  default_prompt: "Run the approved lifecycle for this meeting from preparation through verified follow-up proposals." 
+policy:
+  allow_implicit_invocation: false

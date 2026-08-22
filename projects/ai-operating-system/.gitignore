@@ -1,0 +1,52 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+**/secrets.env
+config/local-settings.yaml
+config/connectors.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Client/restricted data
+client-data/
+raw-data/
+raw-transcripts/
+attachments/
+exports/
+*.tax
+*.tax202*
+*.w2
+*.1099
+
+# Runtime state and logs
+.state/
+logs/
+*.log
+*.pid
+*.lock
+state/runtime/
+state/exceptions/local/
+
+# Python/OS/editor
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/
+
+# Generated packages
+/dist/
+*.zip
+*.tar.gz
+
+# Git conflict/temporary files
+*.orig
+*.rej
+*~

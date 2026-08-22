@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>LiveScorecard</string>
+    <key>CFBundleIdentifier</key>
+    <string>ai.cranston.live-scorecard</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon.icns</string>
+    <key>CFBundleIconName</key>
+    <string>AppIcon</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>Live Scorecard</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>26.0</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Live Scorecard transcribes your microphone to capture sales-call facts.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Live Scorecard converts meeting audio into text for the scorecard.</string>
+    <key>NSScreenCaptureUsageDescription</key>
+    <string>Live Scorecard captures Google Meet audio from Chrome.</string>
+    <key>NSAudioCaptureUsageDescription</key>
+    <string>Live Scorecard captures Google Meet audio from Chrome.</string>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>Live Scorecard reads the current meeting and attendee email so prior facts are tied to the correct prospect.</string>
+</dict>
+</plist>

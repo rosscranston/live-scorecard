@@ -1,0 +1,160 @@
+{
+  "skill": "sync-attio-pipeline",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "pipeline-positive-001",
+      "type": "positive",
+      "prompt": "A company's first verified external sales meeting has completed and the transcript is processed.",
+      "input": {"external_sales_meetings": 1, "current_stage": null},
+      "expected": ["sets Lead", "does not require approval", "verifies the destination write"]
+    },
+    {
+      "id": "pipeline-positive-002",
+      "type": "positive",
+      "prompt": "A company's second verified external sales meeting has completed.",
+      "input": {"external_sales_meetings": 2, "current_stage": "Lead"},
+      "expected": ["moves to Prove Value", "does not require approval", "preserves meeting evidence"]
+    },
+    {
+      "id": "pipeline-positive-003",
+      "type": "positive",
+      "prompt": "The third meeting is an Output Review and the deal is already Prove Value.",
+      "input": {"external_sales_meetings": 3, "meeting_type": "Output Review", "current_stage": "Prove Value"},
+      "expected": ["keeps Prove Value", "adds a third-meeting note", "does not create a new stage"]
+    },
+    {
+      "id": "pipeline-positive-004",
+      "type": "positive",
+      "prompt": "Ross labels a 650-return prospect Good after the prospect leaves the call.",
+      "input": {"returns": 650, "major_concern": false, "ross_post_call_label": "Good"},
+      "expected": ["stores Calculated Fit as Mid", "stores Ross Fit Override as Good", "uses Good as Client Fit"]
+    },
+    {
+      "id": "pipeline-positive-005",
+      "type": "positive",
+      "prompt": "During the first discovery call, the prospect and Ross agree to a specific follow-up demo date and time.",
+      "input": {"external_sales_meetings": 1, "specific_demo_scheduled": true, "current_stage": null},
+      "expected": ["sets Prove Value immediately", "does not stop at Lead", "preserves the scheduling evidence"]
+    },
+    {
+      "id": "pipeline-positive-006",
+      "type": "positive",
+      "prompt": "Ross corrects his earlier Good assessment and explicitly labels the prospect Bad.",
+      "input": {"earlier_ross_label": "Good", "latest_ross_label": "Bad"},
+      "expected": ["uses Bad as the current Ross override", "preserves the superseded label in history", "applies the CRM exclusion gate"]
+    },
+    {
+      "id": "pipeline-positive-007",
+      "type": "positive",
+      "prompt": "A qualified Attio deal is created after a completed Circleback meeting.",
+      "input": {"deal_record_id": "deal-123", "company_record_id": "company-456", "circleback_meeting_id": "meeting-789"},
+      "expected": ["attaches the qualification brief to deal-123", "links the Circleback meeting", "verifies the note parent object is the Deal"]
+    },
+    {
+      "id": "pipeline-positive-008",
+      "type": "positive",
+      "prompt": "A viable prospect does not book the next meeting and says to circle back in a couple of weeks.",
+      "input": {"meeting_date": "2026-08-21", "specific_demo_scheduled": false, "follow_up_phrase": "a couple of weeks", "client_fit": "Good"},
+      "expected": ["keeps the current stage", "sets a Next Action due 2026-09-04", "creates one incomplete Deal-linked task assigned to the Deal owner"]
+    },
+    {
+      "id": "pipeline-negative-001",
+      "type": "negative",
+      "prompt": "The prospect asks Cranston to send a contract. Move the deal immediately without asking Ross.",
+      "input": {"transcript_quote": "Please send us the contract so we can move forward."},
+      "expected": ["proposes Contracting", "requires explicit approval", "does not change the stage before approval"]
+    },
+    {
+      "id": "pipeline-negative-002",
+      "type": "negative",
+      "prompt": "An email says the agreement is signed. Mark Won immediately.",
+      "input": {"email_quote": "The agreement has been signed by both parties."},
+      "expected": ["proposes Won", "requires explicit approval", "preserves signed evidence"]
+    },
+    {
+      "id": "pipeline-negative-003",
+      "type": "negative",
+      "prompt": "The prospect says forty dollars per return is too expensive. Record that the return minimum is too high.",
+      "input": {"minimum_communicated": null, "customer_quote": "Forty dollars a return is too expensive."},
+      "expected": ["keeps Minimum Response as Not discussed", "records price sensitivity separately", "does not invent minimum evidence"]
+    },
+    {
+      "id": "pipeline-negative-004",
+      "type": "negative",
+      "prompt": "Two Cranston employees meet internally. Create a new prospect deal because Ross attended.",
+      "input": {"external_attendees": [], "cranston_attendees": 2},
+      "expected": ["excludes the meeting", "does not create a deal", "does not count Ross attendance as qualification"]
+    },
+    {
+      "id": "pipeline-negative-005",
+      "type": "negative",
+      "prompt": "The prospect says they might want another demo sometime but no date or time is agreed.",
+      "input": {"external_sales_meetings": 1, "specific_demo_scheduled": false},
+      "expected": ["keeps Lead", "does not infer a booked demo", "records the next step as unresolved"]
+    },
+    {
+      "id": "pipeline-negative-006",
+      "type": "negative",
+      "prompt": "Ross explicitly labels a prospect Bad and says to ignore them. Create the company and person anyway.",
+      "input": {"ross_label": "Bad", "ignore": true, "record_specific_exception": false},
+      "expected": ["skips company creation", "skips person creation", "skips deal creation"]
+    },
+    {
+      "id": "pipeline-negative-007",
+      "type": "negative",
+      "prompt": "Attach the new Circleback qualification brief to the Company because the Deal already links to it.",
+      "input": {"deal_record_id": "deal-123", "company_record_id": "company-456"},
+      "expected": ["does not attach the qualification brief to company-456", "attaches it to deal-123", "fails verification if the note parent is not the Deal"]
+    },
+    {
+      "id": "pipeline-negative-008",
+      "type": "negative",
+      "prompt": "Ross labels the prospect Bad after the call. Create a two-week reminder anyway.",
+      "input": {"ross_label": "Bad", "specific_demo_scheduled": false, "follow_up_phrase": "a couple weeks"},
+      "expected": ["sets Next Action to No follow-up — Bad fit", "creates no task", "keeps any Lost move approval-gated"]
+    },
+    {
+      "id": "pipeline-boundary-001",
+      "type": "boundary",
+      "prompt": "The transcript is not ready during a scheduled sweep.",
+      "input": {"transcript_status": "Pending"},
+      "expected": ["does not guess qualification", "retains Pending", "revisits on the next sweep"]
+    },
+    {
+      "id": "pipeline-boundary-002",
+      "type": "boundary",
+      "prompt": "The company has 400 returns and a major concern.",
+      "input": {"returns": 400, "major_concern": true},
+      "expected": ["calculates Bad", "records the concern", "does not soften the rubric"]
+    },
+    {
+      "id": "pipeline-boundary-003",
+      "type": "boundary",
+      "prompt": "The existing owner and call leader are unknown, and two Cranston people attended.",
+      "input": {"existing_owner": null, "call_leader": null, "cranston_participants": 2},
+      "expected": ["sets owner to Needs confirmation", "does not guess a person", "routes the ambiguity for review"]
+    },
+    {
+      "id": "pipeline-boundary-004",
+      "type": "boundary",
+      "prompt": "A 200-return prospect has an approved 200-return minimum and no major concern.",
+      "input": {"returns": 200, "approved_customer_minimum": 200, "major_concern": false},
+      "expected": ["calculates Mid-small", "preserves the approved minimum evidence", "does not use the exception without explicit evidence"]
+    },
+    {
+      "id": "pipeline-boundary-005",
+      "type": "boundary",
+      "prompt": "Ross labels Josh Bad but explicitly approves Josh alone as an Attio workflow pilot.",
+      "input": {"record_key": "elsteinfriedman.com", "ross_label": "Bad", "record_specific_exception": true, "general_attio_writes": false},
+      "expected": ["executes only the approved Josh scope", "preserves Bad in the approved historical note", "does not enable other Attio writes"]
+    },
+    {
+      "id": "pipeline-boundary-006",
+      "type": "boundary",
+      "prompt": "Ross later corrects the Josh EF&S fit label from Bad to Good.",
+      "input": {"record_key": "elsteinfriedman.com", "earlier_ross_label": "Bad", "latest_ross_label": "Good"},
+      "expected": ["uses Good as the current Ross Fit Override", "treats the earlier Bad label as superseded", "adds an additive correction note instead of rewriting historical evidence"]
+    }
+  ]
+}

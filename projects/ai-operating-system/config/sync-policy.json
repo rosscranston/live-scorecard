@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "branch": "main",
+  "interval_seconds": 300,
+  "auto_commit_allowed": [
+    "tests/**",
+    "state/audits/**",
+    "state/feedback/**",
+    "state/scorecards/**",
+    "proposals/**",
+    "skills/*/tests/**",
+    "skills/*/CHANGELOG.md",
+    "skills/*/DECISIONS.md",
+    "decisions/learning/**"
+  ],
+  "protected_paths": [
+    "skills/*/SKILL.md",
+    "skills/*/agents/openai.yaml",
+    "config/approval-policy.yaml",
+    "config/shared-settings.yaml",
+    "adapters/**",
+    ".github/workflows/**",
+    "SECURITY_AND_DATA_HANDLING.md",
+    "APPROVAL_POLICY.md",
+    "scripts/check_sensitive_content.py",
+    "scripts/sync_policy.py",
+    "decisions/approvals/**"
+  ],
+  "forbidden_paths": [
+    ".env",
+    ".env.*",
+    "**/secrets.env",
+    "config/local-settings.yaml",
+    "config/connectors.yaml",
+    "client-data/**",
+    "raw-data/**",
+    "raw-transcripts/**",
+    "attachments/**",
+    "exports/**",
+    "**/*.pem",
+    "**/*.key",
+    "**/*.p12",
+    "**/*.pfx"
+  ],
+  "allow_force_push": false,
+  "allow_conflict_autoresolution": false,
+  "commit_prefix": "auto(sync):"
+}

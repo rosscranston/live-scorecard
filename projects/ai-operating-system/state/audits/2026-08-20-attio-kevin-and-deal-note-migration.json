@@ -1,0 +1,70 @@
+{
+  "run_key": "2026-08-20-attio-kevin-and-deal-note-migration",
+  "completed_at": "2026-08-21T01:05:05Z",
+  "approval_source": "current_user_instruction",
+  "actor": {
+    "name": "Ross Gates",
+    "workspace_membership_id": "fd286374-d5c3-4417-87dc-e62c596da0fc"
+  },
+  "kevin": {
+    "company_record_id": "47743f73-31f2-4e1e-87f1-42a34d5e5891",
+    "person_record_id": "c0e19273-036b-42fa-ad84-9e45aee4a8c5",
+    "deal_record_id": "6c2ece89-001c-4399-b1d5-d4adc358b7dd",
+    "deal_note_id": "ed28a907-fa29-4e2d-aded-7e1a82f43810",
+    "owner_id": "fd286374-d5c3-4417-87dc-e62c596da0fc",
+    "stage": "Prove Value",
+    "value_usd": 10000,
+    "annual_return_volume_used": 250,
+    "annual_return_volume_evidence": "Calendar intake 250; transcript range 250-275",
+    "circleback_id": "03bnt9hsQ86CIF86SNHok",
+    "attio_meeting_id": "2685e4f4-aa3a-400f-ae0b-e0492a811286",
+    "verified": true
+  },
+  "deal_note_migration": [
+    {
+      "deal_record_id": "28b97bfa-3d82-41db-8758-282fd73058e8",
+      "source_company_note_id": "0c47c2a1-3ee6-4c10-8b2f-e9c167fa92e9",
+      "created_deal_note_id": "0a517dd7-2045-4e28-9e62-9459525a419d",
+      "body_equal": true
+    },
+    {
+      "deal_record_id": "5710cc8e-c06a-45e5-b113-3ca9a3e8d354",
+      "source_company_note_id": "8753504f-3b5e-4606-a64d-f53c742ae12c",
+      "created_deal_note_id": "e38ad886-f8e6-4c3b-86ab-b83842e2827a",
+      "body_equal": true
+    },
+    {
+      "deal_record_id": "b85d18e2-de7d-4b16-85ae-4656ba56a687",
+      "source_company_note_id": "7f66d475-9dab-4a0f-85d8-25fc6ac4954a",
+      "created_deal_note_id": "3cc01ffc-e33d-4ddd-9895-5a779e631120",
+      "body_equal": true
+    },
+    {
+      "deal_record_id": "bd764c9a-bea0-4134-96d8-2d22bb356c9c",
+      "source_company_note_id": "8fbccfde-5c6f-4f6a-a741-bc968fd88c76",
+      "created_deal_note_id": "3cfe02aa-82bd-450d-b083-c38bc8c49760",
+      "body_equal": true
+    },
+    {
+      "deal_record_id": "bd764c9a-bea0-4134-96d8-2d22bb356c9c",
+      "source_company_note_id": "e539c24b-ea65-458b-9b64-89a1421630f6",
+      "created_deal_note_id": "fc04ab6a-e464-4e84-878b-1d11426b1058",
+      "body_equal": true
+    }
+  ],
+  "ross_owned_deals_after_run": 6,
+  "no_op_deals": [
+    {
+      "deal_record_id": "0cbe37b8-21ca-468c-b99a-8d99797b8574",
+      "reason": "No associated Company notes to copy; Deal already has one note"
+    }
+  ],
+  "scope_guard": {
+    "company_notes_deleted": false,
+    "unrelated_stage_changes": false,
+    "unrelated_owner_changes": false,
+    "calendar_writes": false,
+    "gmail_writes": false,
+    "notion_writes": false
+  }
+}

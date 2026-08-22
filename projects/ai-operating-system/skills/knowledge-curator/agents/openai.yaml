@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Curator"
+  short_description: "Turn call-level evidence into trustworthy, searchable, continuously improving sales knowledge."
+  default_prompt: "Curate this evidence into the living knowledge system without semantic duplicates and with full history." 
+policy:
+  allow_implicit_invocation: false

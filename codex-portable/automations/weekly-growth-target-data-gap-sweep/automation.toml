@@ -1,0 +1,14 @@
+version = 1
+id = "weekly-growth-target-data-gap-sweep"
+kind = "cron"
+name = "Weekly growth-target data gap sweep"
+prompt = "Run a weekly quality sweep for the Bay Area Head of Growth target pipeline. Refresh the pipeline with `python3 -m pipeline.cli run --scrape-sites --discover-edgar --limit-per-query 25`, then inspect `data/output/all_candidates.csv`, `data/output/top_100_candidates.csv`, and the highest-priority company profiles under `kb/companies`. Identify which top candidates are missing key data such as Crunchbase funding confirmation, LinkedIn headcount/GTM team, founder LinkedIn, ATS board, customer logos, culture-risk notes, and warm-intro fields. Report recommended data fixes or seed-file additions only; do not create growth strategies or outreach campaigns."
+status = "PAUSED"
+rrule = "FREQ=WEEKLY;BYDAY=FR;BYHOUR=14;BYMINUTE=0;BYSECOND=0"
+model = "gpt-5.2"
+reasoning_effort = "medium"
+execution_environment = "local"
+target = { type = "project", project_id = "local-6fb97ce5d70a7c963a33bafefc6eba00" }
+cwds = ["/Users/rossegates/career/head-of-growth-series-a-or-b"]
+created_at = 1781319104229
+updated_at = 1784945032465

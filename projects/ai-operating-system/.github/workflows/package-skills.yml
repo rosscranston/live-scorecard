@@ -1,0 +1,27 @@
+name: Package ChatGPT Skills
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - run: python scripts/check_sensitive_content.py --all-tracked
+      - run: python scripts/package_skills.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-skills
+          path: dist/
+          if-no-files-found: error

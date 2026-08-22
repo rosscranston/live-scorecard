@@ -1,0 +1,11 @@
+{
+  "exception_id": "exception-YYYYMMDD-001",
+  "created_at": "2026-08-15T00:00:00-07:00",
+  "skill": "workspace-operator",
+  "reason": "Required connector unavailable on this runtime",
+  "severity": "blocking",
+  "status": "open",
+  "missing_capability": "service connector",
+  "safe_next_step": "Ask the user whether to configure a local connector or hand off to ChatGPT web",
+  "question_for_user": "This runtime cannot access the service. Should I help configure a local connector or stage the action for ChatGPT web?"
+}

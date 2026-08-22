@@ -1,0 +1,6 @@
+interface:
+  display_name: "Day Operator"
+  short_description: "Help the AE act better in the moment by turning verified sources and overnight learning into a concise operati"
+  default_prompt: "Build or review the Daily Call Log using the approved source ownership, page order, visibility, preparation, and feedback rules." 
+policy:
+  allow_implicit_invocation: false

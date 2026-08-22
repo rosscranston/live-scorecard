@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Work Audit Output",
+  "type": "object",
+  "required": [
+    "mode",
+    "window_start",
+    "window_end",
+    "sources_accessed",
+    "conversations",
+    "routes",
+    "learnings",
+    "proposals",
+    "exceptions",
+    "morning_handoff"
+  ],
+  "properties": {
+    "mode": {
+      "enum": [
+        "daily",
+        "weekly"
+      ]
+    },
+    "window_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "window_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sources_accessed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conversations": {
+      "type": "array"
+    },
+    "routes": {
+      "type": "array"
+    },
+    "learnings": {
+      "type": "array"
+    },
+    "proposals": {
+      "type": "array"
+    },
+    "exceptions": {
+      "type": "array"
+    },
+    "morning_handoff": {
+      "type": "object"
+    }
+  }
+}

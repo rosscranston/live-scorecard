@@ -1,0 +1,27 @@
+version: 1.0.0
+normalization:
+  lowercase: true
+  unicode_nfkc: true
+  strip_punctuation: true
+  collapse_whitespace: true
+  remove_stop_phrases:
+    - can you tell me
+    - how do you
+    - what is the
+thresholds:
+  exact_normalized: 1.0
+  likely_same_meaning: 0.86
+  ambiguous_review_band:
+    min: 0.72
+    max: 0.86
+rules:
+  faq:
+    compare_fields: [question, intent, product_area]
+    preserve_answer_history: true
+    same_price_question_one_card: true
+  terms:
+    compare_fields: [term, aliases, normalized_meaning]
+    authoritative_verification_required: true
+  actions:
+    compare_fields: [service, operation, target, normalized_payload]
+    require_idempotency_key: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Chat Router"
+  short_description: "Keep the conversation portfolio navigable without duplicating knowledge or losing cross-project context."
+  default_prompt: "Route this conversation to one primary project, add non-duplicative cross-links, and use the approved title and archive rules." 
+policy:
+  allow_implicit_invocation: false

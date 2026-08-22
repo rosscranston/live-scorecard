@@ -1,0 +1,6 @@
+interface:
+  display_name: "Work Auditor"
+  short_description: "Turn recent business conversations and outcomes into organized projects, reusable skills, tests, and a morning"
+  default_prompt: "Run the approved daily or weekly business-work audit, preserve evidence, update safe learning artifacts, and prepare any approval-required production changes." 
+policy:
+  allow_implicit_invocation: false

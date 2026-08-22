@@ -1,0 +1,58 @@
+{
+  "run_key": "2026-08-20-attio-john-david-cindy",
+  "completed_at": "2026-08-21T00:31:39Z",
+  "approval_source": "current_user_instruction",
+  "actor": {
+    "name": "Ross Gates",
+    "workspace_membership_id": "fd286374-d5c3-4417-87dc-e62c596da0fc"
+  },
+  "changes": [
+    {
+      "type": "deal_owner_update",
+      "prospect": "Cindy / Leddicotte Tax & Accounting",
+      "deal_record_id": "0cbe37b8-21ca-468c-b99a-8d99797b8574",
+      "prior_owner_id": "3887ef2d-7368-4e57-b4e4-3b712665a6e5",
+      "new_owner_id": "fd286374-d5c3-4417-87dc-e62c596da0fc",
+      "preserved": {
+        "stage": "Prove Value",
+        "value_usd": 2940,
+        "company_record_id": "7202e262-af5d-47fc-a594-344be77fa875",
+        "associated_people_count": 2
+      },
+      "verified": true
+    },
+    {
+      "type": "company_person_deal_company_note_create",
+      "prospect": "John Adair",
+      "company_record_id": "eeed0db3-5672-4f5d-8ff3-af020d38ca0b",
+      "person_record_id": "104cad00-845b-4675-bb05-6dbf1b7d6211",
+      "deal_record_id": "b85d18e2-de7d-4b16-85ae-4656ba56a687",
+      "note_id": "7f66d475-9dab-4a0f-85d8-25fc6ac4954a",
+      "meeting_id": "1b0f8fa9-3eac-4ea0-876b-1a79d1b472aa",
+      "stage": "Prove Value",
+      "value_usd": 4000,
+      "owner_id": "fd286374-d5c3-4417-87dc-e62c596da0fc",
+      "duplicate_check": "exactly_one_after_write",
+      "verified": true
+    },
+    {
+      "type": "company_person_deal_company_note_create",
+      "prospect": "David Bartolme",
+      "company_record_id": "2df38907-e680-4964-beda-7bd914b6e1ca",
+      "person_record_id": "658837ea-2866-4318-84e7-879c971c4d37",
+      "deal_record_id": "5710cc8e-c06a-45e5-b113-3ca9a3e8d354",
+      "note_id": "8753504f-3b5e-4606-a64d-f53c742ae12c",
+      "meeting_id": "47b319e0-5671-4eb0-9849-685dea2612fa",
+      "stage": "Prove Value",
+      "value_usd": 10000,
+      "owner_id": "fd286374-d5c3-4417-87dc-e62c596da0fc",
+      "duplicate_check": "exactly_one_after_write",
+      "verified": true
+    }
+  ],
+  "scope_guard": {
+    "other_attio_records_changed": false,
+    "calendar_writes": false,
+    "notion_writes": false
+  }
+}

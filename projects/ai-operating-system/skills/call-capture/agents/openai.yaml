@@ -1,0 +1,6 @@
+interface:
+  display_name: "Call Capture"
+  short_description: "Extract complete reusable evidence from one call without confusing raw meeting truth with AI interpretation."
+  default_prompt: "Capture this completed call into sourced, deduplicable knowledge and action proposals." 
+policy:
+  allow_implicit_invocation: false

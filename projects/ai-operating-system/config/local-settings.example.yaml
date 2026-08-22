@@ -1,0 +1,9 @@
+version: 1.0.0
+machine:
+  name: replace-me
+  role: mac_editor_or_ubuntu_hermes
+repository:
+  absolute_path: /replace/with/absolute/path
+connectors_file: ~/.config/ai-operating-system/connectors.yaml
+secrets_file: ~/.config/ai-operating-system/secrets.env
+logs_directory: ~/.local/state/ai-os

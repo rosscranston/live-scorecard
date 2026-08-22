@@ -1,0 +1,54 @@
+version: 1.0.0
+projects:
+  - id: sales-operating-system
+    title: Sales Operating System & Automation
+    durable: true
+    includes:
+      - daily briefs and reviews
+      - Circleback to Notion and Attio workflows
+      - actions, naming, and living databases
+  - id: sales-enablement
+    title: Sales Enablement & Demo Mastery
+    durable: true
+    includes:
+      - discovery and demo scripts
+      - objection handling and role-play
+      - security and product positioning
+      - pilots and meeting agendas
+  - id: cpa-tax-knowledge
+    title: CPA & Tax Knowledge Base
+    durable: true
+    includes:
+      - tax and accounting terminology
+      - forms, documents, and plain-language explanations
+  - id: agent-architecture
+    title: AI Agent Architecture & Automation
+    durable: true
+    includes:
+      - ChatGPT, Codex, Hermes, connectors, memory, approvals, and skills
+  - id: team-operating-rhythm
+    title: Team Operating Rhythm & Communication
+    durable: true
+    includes:
+      - Slack visibility, team handoffs, and status communication
+  - id: onboarding
+    title: Employee Onboarding & Technical Setup
+    durable: true
+    includes:
+      - one-time setup steps that future employees can reuse
+      - accounts, devices, shortcuts, and remote access
+  - id: quick-questions
+    title: Quick Questions
+    durable: false
+    includes:
+      - isolated questions with no durable workflow or onboarding value
+  - id: archive
+    title: Archive / Superseded
+    durable: false
+    approval_required: true
+routing_rules:
+  one_primary_home: true
+  allow_tags_and_cross_links: true
+  duplicate_to_secondary_project: false
+  include_personal_looking_items_when_work_reusable: true
+  inactive_one_off_archive_candidate_days: 30

@@ -1,0 +1,31 @@
+version: 1.0.0
+timezone: America/Los_Angeles
+jobs:
+  - id: daily-work-audit
+    name: AI OS Daily Work Audit
+    cron: "0 0 * * *"
+    skill: work-auditor
+    mode: daily
+    lookback_hours: 24
+    deliver: local
+  - id: weekly-work-audit
+    name: AI OS Weekly Work Audit
+    cron: "0 0 * * 5"
+    skill: work-auditor
+    mode: weekly
+    lookback_hours: 168
+    deliver: local
+  - id: morning-brief
+    name: AI OS Morning Brief
+    cron: "0 6 * * *"
+    skill: day-operator
+    mode: brief
+    completion_deadline_local: "08:00"
+    deliver: local
+  - id: end-of-day-review
+    name: AI OS End-of-Day Review
+    cron: "0 18 * * *"
+    skill: day-operator
+    mode: review
+    cutoff_local: "18:00"
+    deliver: local

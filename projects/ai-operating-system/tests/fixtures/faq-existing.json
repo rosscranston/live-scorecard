@@ -1,0 +1,14 @@
+[
+  {
+    "id": "faq-001",
+    "question": "How much does the product cost?"
+  },
+  {
+    "id": "faq-002",
+    "question": "How do you secure client data?"
+  },
+  {
+    "id": "faq-003",
+    "question": "Which tax software integrations are supported?"
+  }
+]

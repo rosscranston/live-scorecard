@@ -1,0 +1,14 @@
+version = 1
+id = "weekday-bay-area-growth-target-refresh"
+kind = "cron"
+name = "Weekday Bay Area growth-target refresh"
+prompt = "Refresh the Bay Area Head of Growth target pipeline. In the workspace, run `python3 -m pipeline.cli run --scrape-sites --discover-edgar --limit-per-query 12`. Review `data/output/run_summary.json`, `data/output/top_100_candidates.csv`, and `kb/index.csv`. Report the top candidates, newly added companies, tier changes, data-confidence changes, and any scraper/source failures or premium data gaps. Do not create company-specific growth strategies; keep the output focused on pipeline status and candidate identification."
+status = "PAUSED"
+rrule = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=7;BYMINUTE=0;BYSECOND=0"
+model = "gpt-5.2"
+reasoning_effort = "medium"
+execution_environment = "local"
+target = { type = "project", project_id = "local-6fb97ce5d70a7c963a33bafefc6eba00" }
+cwds = ["/Users/rossegates/career/head-of-growth-series-a-or-b"]
+created_at = 1781319098344
+updated_at = 1784945028616

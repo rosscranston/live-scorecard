@@ -1,0 +1,6 @@
+interface:
+  display_name: "Workspace Operator"
+  short_description: "Compartmentalize connector-specific reads and writes so business judgment is portable and service permissions "
+  default_prompt: "Validate and execute this service-neutral action through the correct adapter, approval gate, duplicate check, verification, and audit path." 
+policy:
+  allow_implicit_invocation: false

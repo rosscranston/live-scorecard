@@ -1,0 +1,6 @@
+interface:
+  display_name: "Team Update"
+  short_description: "Increase startup transparency without creating performative busy work."
+  default_prompt: "Draft an outcome-focused team update for ross-notebook with decisions, blockers, and next priorities." 
+policy:
+  allow_implicit_invocation: false

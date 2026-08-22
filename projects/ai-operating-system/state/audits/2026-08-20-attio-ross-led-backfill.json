@@ -1,0 +1,119 @@
+{
+  "run_key": "ross-led-completed-through-2026-08-20T16:00:00-07:00",
+  "status": "verified",
+  "approved_by": "Ross Gates",
+  "approved_on": "2026-08-20",
+  "window": {
+    "start": "2026-01-01T00:00:00-08:00",
+    "end": "2026-08-20T16:00:00-07:00",
+    "first_accessible_calendar_event": "2026-08-07T09:00:00-07:00",
+    "first_accessible_prospect_activity": "2026-08-11T09:30:00-07:00"
+  },
+  "inventory": {
+    "calendar_events": 115,
+    "sales_shaped_calendar_events": 63,
+    "circleback_meetings_with_ross_profile": 60,
+    "calendar_next_page_token": null,
+    "circleback_last_page_index": 3
+  },
+  "writes": {
+    "companies_created": [
+      {
+        "name": "Tax Fighters Inc.",
+        "domain": "taxfightersinc.com",
+        "record_id": "d77f6230-7629-41a2-a05d-376e26c8c7f3"
+      }
+    ],
+    "people_created": [
+      {
+        "name": "Ed Welch",
+        "email": "ed@taxfightersinc.com",
+        "record_id": "e1e5bed5-341a-4d00-bd94-6a8e9a8a0f43"
+      }
+    ],
+    "deals_created": [
+      {
+        "name": "Tax Fighters Inc. | TaxSlayer Pro Trial",
+        "stage": "Prove Value",
+        "owner_workspace_membership_id": "fd286374-d5c3-4417-87dc-e62c596da0fc",
+        "value_usd": 8000,
+        "record_id": "28b97bfa-3d82-41db-8758-282fd73058e8"
+      }
+    ],
+    "company_notes_created": [
+      {
+        "purpose": "Ed Welch qualification",
+        "note_id": "0c47c2a1-3ee6-4c10-8b2f-e9c167fa92e9",
+        "circleback_meeting_id": "9y5qkjh7xelhdC0KJI1CQ"
+      },
+      {
+        "purpose": "Josh Matthew fit correction",
+        "note_id": "e539c24b-ea65-458b-9b64-89a1421630f6",
+        "circleback_meeting_id": "a6NffPoOOtgEE9zKa8JMI"
+      }
+    ]
+  },
+  "inclusion_decisions": [
+    {
+      "prospect": "Ed Welch / Tax Fighters Inc.",
+      "decision": "created",
+      "reason": "Completed Ross-led call, qualified prospect, and a specific hands-on demo was scheduled during the call."
+    },
+    {
+      "prospect": "Josh Matthew / EF&S",
+      "decision": "existing deal retained; correction note added",
+      "reason": "Ross explicitly corrected the fit from Bad to Good."
+    },
+    {
+      "prospect": "Johnathan Raj",
+      "decision": "skipped",
+      "reason": "Explicit Bad and Ignore assessment in Ross's post-call daily-planner note."
+    },
+    {
+      "prospect": "Allen Jomaya / AJJ Financials",
+      "decision": "skipped",
+      "reason": "Ross's adjacent post-call calendar note says Bad Client - Ignore."
+    },
+    {
+      "prospect": "Cindy and George Leddicotte",
+      "decision": "no Ross-owned record created",
+      "reason": "A confidently matched existing deal is owned by Max Minsker; existing-owner precedence applies."
+    },
+    {
+      "prospect": "David Bartolme",
+      "decision": "no Ross-owned record created",
+      "reason": "The call involved Ross, but the destination relationship is teammate-owned and was not reassigned."
+    },
+    {
+      "prospect": "Martha Matos",
+      "decision": "skipped",
+      "reason": "One invite was canceled and the rescheduled recording contained no substantive prospect conversation."
+    },
+    {
+      "prospect": "Yash Ranade and Cyrus Yi",
+      "decision": "skipped",
+      "reason": "Past invites had no matching completed Circleback prospect conversation."
+    }
+  ],
+  "future_boundary": {
+    "excluded": true,
+    "reason": "Discovery calls not yet completed, including the 4:00 PM Pacific invite, remain out of Attio until qualified from completed evidence."
+  },
+  "verification": {
+    "tax_fighters_company_matches": 1,
+    "ed_welch_person_matches": 1,
+    "tax_fighters_deal_matches": 1,
+    "tax_fighters_company_note_matches": 1,
+    "josh_correction_note_matches": 1,
+    "read_after_write": true,
+    "relationships_verified": true
+  },
+  "approval_boundaries_unchanged": [
+    "Contracting",
+    "Won",
+    "Lost",
+    "backward stage changes",
+    "ambiguous merges",
+    "general scheduled Attio writes"
+  ]
+}

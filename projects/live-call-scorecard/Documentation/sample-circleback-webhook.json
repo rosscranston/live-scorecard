@@ -1,0 +1,17 @@
+{
+  "id": "demo-circleback-meeting",
+  "name": "SYNTHETIC DEMO - Example Tax Discovery",
+  "createdAt": "2026-08-20T18:00:00Z",
+  "transcript": [
+    {
+      "speaker": "Prospect",
+      "text": "We file about 900 returns and use Drake on desktop.",
+      "timestamp": 20.0
+    },
+    {
+      "speaker": "Ross Gates",
+      "text": "The minimum commitment is 100 returns.",
+      "timestamp": 45.0
+    }
+  ]
+}

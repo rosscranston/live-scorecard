@@ -1,0 +1,6 @@
+# Optional examples. Codex discovers skills from ~/.agents/skills automatically.
+# To disable one without deleting the symlink:
+#
+# [[skills.config]]
+# path = "/Users/YOUR_NAME/.agents/skills/example/SKILL.md"
+# enabled = false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tax Translator"
+  short_description: "Help sales professionals sound credible with CPAs while knowing the practical meaning and limits of each term."
+  default_prompt: "Translate this tax/accounting concept into accurate plain language and a verified learning entry." 
+policy:
+  allow_implicit_invocation: false

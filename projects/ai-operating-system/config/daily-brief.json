@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.3.0",
+  "approved_at": "2026-08-15",
+  "timezone": "America/Los_Angeles",
+  "schedule": {
+    "build_start": "06:00",
+    "ready_by": "08:00",
+    "refresh_on_material_change": true,
+    "create_on_no_call_days": true
+  },
+  "destination": {
+    "service": "notion",
+    "database": "Daily Call Logs",
+    "title_pattern": "YYYY-MM-DD | AE",
+    "meeting_count_scope": "external-sales-meetings"
+  },
+  "calendar": {
+    "display": "all-work-events",
+    "omit_purely_personal_unless_work_impact": true,
+    "deep_prep_scope": "external-or-sales-related"
+  },
+  "page_order": [
+    "todays-mission",
+    "todays-schedule",
+    "meeting-source-data-and-manual-notes",
+    "collapsed-ai-preparation",
+    "do-today",
+    "kick-off-with-ai",
+    "what-changed-overnight",
+    "feedback"
+  ],
+  "prioritization": {
+    "todays_mission": true,
+    "chronological_meetings": true,
+    "must_win_today": {
+      "enabled": true,
+      "maximum": 1,
+      "requires_evidence": true
+    }
+  },
+  "presentation": {
+    "verified_source_data_visible": true,
+    "ai_interpretation_collapsed": true,
+    "manual_notes_rewritten": false,
+    "round_returns_per_year": false,
+    "length_rule": "Show only information that could change what Ross does, asks, or says."
+  },
+  "meeting_visible_fields": [
+    "time",
+    "call-number",
+    "meeting-type",
+    "contact",
+    "firm",
+    "primary-tax-software",
+    "exact-returns-per-year",
+    "attio-stage",
+    "deal-value",
+    "latest-circleback-link",
+    "manual-notes",
+    "current-sourced-next-step",
+    "open-commitments",
+    "latest-gmail-thread-link",
+    "unanswered-prospect-email-status"
+  ],
+  "missing_data": {
+    "decision_critical": "Needs confirmation",
+    "optional_low_value": "omit"
+  },
+  "source_conflicts": {
+    "visible_label": "Resolve Before Call",
+    "supporting_analysis_collapsed": true
+  },
+  "preparation": {
+    "win_condition": {
+      "enabled": true,
+      "visible": false,
+      "separate_approval_to_make_visible": true
+    },
+    "inline_short_stage_checklist": true,
+    "link_full_playbook": true,
+    "max_visible_bullets": 5,
+    "max_priority_questions": 3,
+    "what_to_say_max": 3,
+    "avoid_saying": true,
+    "new_prospect_summary_lines": 5
+  },
+  "overnight": {
+    "position": "after-call-preparation",
+    "safe_automatic_updates": [
+      "tests",
+      "positive-examples",
+      "negative-examples",
+      "changelogs",
+      "decision-logs",
+      "indexes",
+      "tables-of-contents",
+      "non-behavioral-metadata"
+    ],
+    "proposal_only_updates": [
+      "production-instructions",
+      "approval-gates",
+      "business-claims",
+      "source-priority",
+      "autonomous-write-permissions"
+    ],
+    "low_risk_autonomy_proposal_after_clean_runs": 5
+  },
+  "notification": {
+    "service": "slack",
+    "channel": "ross-notebook",
+    "mode": "draft-only"
+  },
+  "feedback": {
+    "choices": [
+      "Useful",
+      "Wrong",
+      "Missing"
+    ],
+    "free_text": true,
+    "create_negative_test_from_failure": true,
+    "create_positive_test_from_correction": true
+  }
+}

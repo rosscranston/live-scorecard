@@ -1,0 +1,148 @@
+version: 1.0.0
+write_target: notion_temp
+notion_temp:
+  parent_page_id: 3bd4fe20-b9f4-81ad-bb04-ea55441a86cf
+  database_title: Deals-Temp
+  database_id: 66f10b16-2360-4a39-a305-9ef90f45171d
+  data_source_id: 9dcb8009-c7b0-4612-b9aa-93cfd3ac3a6e
+attio:
+  admin_permission_confirmed: true
+  writes_enabled: false
+  preserve_existing_deal_schema: true
+  approved_deal_attributes:
+    next_action:
+      title: Next Action
+      type: text
+      attribute_id: e03c02f5-a503-4f1c-afa9-383227a72e21
+      api_slug: next_action
+  qualification_note_parent: deal
+  opportunity_value_per_annual_return: 40
+  one_off_pilots:
+    - record_key: elsteinfriedman.com
+      approved_on: 2026-08-20
+      scope: company_person_deal_company_note
+      status: completed_consumed
+      completed_at: 2026-08-20T15:04:33-07:00
+      company_record_id: a1c1454d-a536-42ce-ab6c-46cbd9ac5165
+      person_record_id: 757bef5d-45da-42dc-99a9-361cb5f677ce
+      deal_record_id: bd764c9a-bea0-4134-96d8-2d22bb356c9c
+      note_id: 8fbccfde-5c6f-4f6a-a741-bc968fd88c76
+    - record_key: adairadvisorygroup.com
+      approved_on: 2026-08-20
+      scope: company_person_deal_company_note
+      status: completed_consumed
+      completed_at: 2026-08-20T17:31:39-07:00
+      company_record_id: eeed0db3-5672-4f5d-8ff3-af020d38ca0b
+      person_record_id: 104cad00-845b-4675-bb05-6dbf1b7d6211
+      deal_record_id: b85d18e2-de7d-4b16-85ae-4656ba56a687
+      note_id: 7f66d475-9dab-4a0f-85d8-25fc6ac4954a
+    - record_key: bartolmecpa.com
+      approved_on: 2026-08-20
+      scope: company_person_deal_company_note
+      status: completed_consumed
+      completed_at: 2026-08-20T17:31:39-07:00
+      company_record_id: 2df38907-e680-4964-beda-7bd914b6e1ca
+      person_record_id: 658837ea-2866-4318-84e7-879c971c4d37
+      deal_record_id: 5710cc8e-c06a-45e5-b113-3ca9a3e8d354
+      note_id: 8753504f-3b5e-4606-a64d-f53c742ae12c
+    - record_key: deal:0cbe37b8-21ca-468c-b99a-8d99797b8574
+      approved_on: 2026-08-20
+      scope: owner_change_only_max_to_ross
+      status: completed_consumed
+      completed_at: 2026-08-20T17:29:46-07:00
+      deal_record_id: 0cbe37b8-21ca-468c-b99a-8d99797b8574
+      prior_owner_id: 3887ef2d-7368-4e57-b4e4-3b712665a6e5
+      new_owner_id: fd286374-d5c3-4417-87dc-e62c596da0fc
+    - record_key: dentaledgers.com
+      approved_on: 2026-08-20
+      scope: company_person_deal_deal_note
+      status: completed_consumed
+      completed_at: 2026-08-20T18:04:16-07:00
+      company_record_id: 47743f73-31f2-4e1e-87f1-42a34d5e5891
+      person_record_id: c0e19273-036b-42fa-ad84-9e45aee4a8c5
+      deal_record_id: 6c2ece89-001c-4399-b1d5-d4adc358b7dd
+      note_id: ed28a907-fa29-4e2d-aded-7e1a82f43810
+  backfill_runs:
+    - run_key: ross-led-completed-through-2026-08-20T16:00:00-07:00
+      approved_on: 2026-08-20
+      approval_source: current_user_instruction
+      scope: completed_qualified_ross_led_company_person_deal_company_note
+      exclusions:
+        - future_discovery_invites
+        - no_shows_and_reschedules
+        - teammate_owned_deals
+        - explicit_bad_or_ignore
+      status: completed
+      completed_at: 2026-08-20T16:05:00-07:00
+      new_company_record_ids:
+        - d77f6230-7629-41a2-a05d-376e26c8c7f3
+      new_person_record_ids:
+        - e1e5bed5-341a-4d00-bd94-6a8e9a8a0f43
+      new_deal_record_ids:
+        - 28b97bfa-3d82-41db-8758-282fd73058e8
+      new_note_ids:
+        - 0c47c2a1-3ee6-4c10-8b2f-e9c167fa92e9
+        - e539c24b-ea65-458b-9b64-89a1421630f6
+    - run_key: ross-owned-company-notes-to-deals-2026-08-20
+      approved_on: 2026-08-20
+      approval_source: current_user_instruction
+      scope: copy_missing_company_qualification_notes_to_current_ross_owned_deals
+      status: completed
+      completed_at: 2026-08-20T18:05:05-07:00
+      source_note_ids:
+        - 0c47c2a1-3ee6-4c10-8b2f-e9c167fa92e9
+        - 8753504f-3b5e-4606-a64d-f53c742ae12c
+        - 7f66d475-9dab-4a0f-85d8-25fc6ac4954a
+        - e539c24b-ea65-458b-9b64-89a1421630f6
+        - 8fbccfde-5c6f-4f6a-a741-bc968fd88c76
+      created_deal_note_ids:
+        - 0a517dd7-2045-4e28-9e62-9459525a419d
+        - e38ad886-f8e6-4c3b-86ab-b83842e2827a
+        - 3cc01ffc-e33d-4ddd-9895-5a779e631120
+        - 3cfe02aa-82bd-450d-b083-c38bc8c49760
+        - fc04ab6a-e464-4e84-878b-1d11426b1058
+schedule:
+  timezone: America/Los_Angeles
+  sweep_times:
+    - "07:00"
+    - "11:00"
+    - "14:00"
+    - "17:00"
+    - "19:00"
+transcript_trigger:
+  mode: scheduled
+  webhook:
+    enabled: false
+    endpoint: null
+stages:
+  automatic_forward:
+    - Lead
+    - Prove Value
+  explicit_approval:
+    - Contracting
+    - Won 🎉
+    - Lost
+    - backward_change
+  prove_value_when_demo_scheduled_on_current_call: true
+inclusion_gate:
+  skip_explicit_bad_or_ignore: true
+  skip_competitive_research_without_buying_intent: true
+ownership_precedence:
+  - existing_destination_owner
+  - call_leader
+  - cranston_participant_when_leader_unknown
+minimum:
+  company_default: 250
+  allowed_customer_values:
+    - 100
+    - 150
+    - 200
+    - 250
+fit:
+  allowed_values:
+    - Good
+    - Mid
+    - Mid-small
+    - Bad
+    - Needs confirmation
+minimum_confidence_for_automatic_write: 0.90

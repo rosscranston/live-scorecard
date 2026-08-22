@@ -1,0 +1,54 @@
+{
+  "action_id": "notion-deals-temp-20260820",
+  "created_at": "2026-08-20T14:10:03-07:00",
+  "service": "notion",
+  "operation": "create_database",
+  "target": {
+    "kind": "notion_database",
+    "id": "66f10b16-2360-4a39-a305-9ef90f45171d",
+    "locator": "https://app.notion.com/p/66f10b1623604a39a3059ef90f45171d"
+  },
+  "after": {
+    "title": "Deals-Temp",
+    "data_source_id": "9dcb8009-c7b0-4612-b9aa-93cfd3ac3a6e",
+    "views": ["Pipeline", "All Deals", "Approval Queue", "Transcript Queue"],
+    "seed_records": ["EF&S | ProSeries", "Ledger Right | Drake"]
+  },
+  "reason": "Create the temporary Attio deal mirror and qualification schema requested by Ross.",
+  "confidence": 1.0,
+  "risk": "medium",
+  "approval": {
+    "required": true,
+    "status": "approved",
+    "approved_by": "Ross Gates",
+    "approved_at": "2026-08-20T14:10:03-07:00"
+  },
+  "evidence": [
+    {
+      "source": "codex_task",
+      "excerpt": "create a new database in the Notion AI-OS called Deals-Temp",
+      "link_or_id": "current-user-request"
+    }
+  ],
+  "duplicate_check": {
+    "status": "clear",
+    "matches": []
+  },
+  "idempotency_key": "notion:deals-temp:3bd4fe20-b9f4-81ad-bb04-ea55441a86cf",
+  "verification": {
+    "method": "Fetch the database, query the data source, and fetch both seed pages and the operating guide.",
+    "expected": "Deals-Temp has the defined schema, four views, and two verified seed records.",
+    "actual": "Verified the database and data source, both seed records, and the operating guide after creation."
+  },
+  "rollback": {
+    "method": "manual_archive_with_approval",
+    "instructions": "Archive the database only with Ross's explicit approval."
+  },
+  "metadata": {
+    "skill": "sync-attio-pipeline",
+    "attio_writes_performed": false,
+    "josh_page_id": "3c24fe20-b9f4-8113-a27a-f45a04f0d4f8",
+    "damien_page_id": "3c24fe20-b9f4-814b-b0d8-f1dd2d98ce72",
+    "guide_page_id": "3c24fe20-b9f4-8121-aae3-d100b75099d5"
+  }
+}

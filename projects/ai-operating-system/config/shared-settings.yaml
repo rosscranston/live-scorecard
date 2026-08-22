@@ -1,0 +1,50 @@
+version: 1.0.0
+organization:
+  name: Cranston AI
+  primary_user: Ross Gates
+  timezone: America/Los_Angeles
+repository:
+  canonical_remote: private_github
+  default_branch: main
+  github_write_scope: primary_owner_only
+  primary_owner_login: rosscranston
+  automatic_sync_minutes: 5
+  allow_force_push: false
+  allow_automatic_conflict_resolution: false
+skills:
+  implicit_invocation_default: false
+  suggest_relevant_skill: true
+  semantic_versioning: true
+  changelog_required: true
+  decision_log_required: true
+learning:
+  daily_catalog_review: true
+  correction_creates_negative_test: true
+  correction_creates_positive_test: true
+  production_rule_changes_require_approval: true
+  autonomy_proposal_after_clean_runs: 5
+data_boundaries:
+  raw_client_tax_documents: approved_cloud_only
+  secrets: local_only
+  raw_transcripts_in_git: false
+  sanitized_examples_in_git: true
+source_ownership:
+  attio: long_term_account_deal_truth
+  circleback: exhaustive_meeting_truth
+  notion_projects: internal_work_truth
+  notion_daily_call_logs: daily_ae_cockpit
+  gmail: email_message_truth
+  google_calendar: schedule_truth
+  github: skill_rule_test_decision_truth
+ambiguity:
+  interactive: ask_one_targeted_question
+  scheduled: create_exception_and_stop
+  minimum_write_confidence: 0.90
+naming:
+  conversation_title: "Project | Outcome | YYYY-MM-DD"
+  calendar_event: "Time | Call-# | Meeting Type | Primary Tax Software | Exact Returns/yr"
+  attio_deal: "Firm Name | Primary Tax Software"
+  notion_project: "Verb + concrete object/outcome"
+archive:
+  inactive_one_off_candidate_days: 30
+  automatic_delete: false

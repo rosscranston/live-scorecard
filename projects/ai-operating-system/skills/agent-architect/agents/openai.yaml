@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agent Architect"
+  short_description: "Put each task on the safest and most reliable execution surface while keeping the system portable."
+  default_prompt: "Design the safest reliable division of labor across ChatGPT, Codex, Hermes, connectors, scripts, and human approvals." 
+policy:
+  allow_implicit_invocation: false

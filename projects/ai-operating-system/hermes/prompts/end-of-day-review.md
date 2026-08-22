@@ -1,0 +1,1 @@
+Use the `day-operator` skill in review mode. Process calls completed through 6:00 PM America/Los_Angeles. Calls after the cutoff roll into the next review. Update only permitted living knowledge through workspace action envelopes, semantic duplicate checks, approval policy, and verification. Produce a concise report for Ross to review before ending the workday.
